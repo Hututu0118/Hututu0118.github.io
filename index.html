@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>安工大第五茶欢会</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://nie.res.netease.com/r/pic/20190509/91cbe080-d976-42f3-b79d-f3ef86f21b63.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section {
+            padding: 100px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem;
+            width: calc(33.333% - 2rem);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-family: 'Cinzel Decorative', cursive;
+            color: #FFD700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+            -webkit-text-stroke: 2px black;
+        }
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        p,
+        td,
+        th {
+            font-size: 1.25rem;
+        }
+
+        a {
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+        }
+
+        .hero a:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #login-modal form button:hover {
+            transform: scale(1.05);
+        }
+
+        #login-modal {
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #login-modal .bg-gray-800 {
+            transition: transform 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 2rem;
+            width: 30%;
+            margin: 0 auto;
+        }
+
+        #login-modal .bg-gray-800:hover {
+            transform: scale(1.02);
+        }
+
+        /* 星星拖尾特效样式 */
+        .star-trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="white" d="M256 32l31.7 90.7 99.8 14.4 71.2 62.2-25.5 93.6 6.3 101.6L256 432 78.5 484.5l6.3-101.6-25.5-93.6 71.2-62.2 99.8-14.4L256 32z"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+            animation: fadeOut 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+
+        /* 新闻样式 */
+       .news-item {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+       .news-date {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#" class="text-2xl font-bold">安工大第五茶欢会</a>
+        <ul class="flex space-x-6">
+            <li><a href="#home" class="hover:text-gray-300">首页</a></li>
+            <li><a href="#about" class="hover:text-gray-300">活动介绍</a></li>
+            <li><a href="#schedule" class="hover:text-gray-300">活动日程</a></li>
+            <li><a href="#gallery" class="hover:text-gray-300">精彩瞬间</a></li>
+            <li><a href="#" class="hover:text-gray-300" onclick="openLoginModal()">登录</a></li>
+            <li><a href="#news" class="hover:text-gray-300">每日新闻</a></li>
+        </ul>
+    </nav>
+
+    <!-- 首页 -->
+    <section id="home" class="hero">
+        <div class="text-center">
+            <p class="hero-title">安工大第五茶欢会</p>
+            <p class="mb-8">一场温馨的茶会，一次难忘的相聚</p>
+            <a href="#about" class="bg-white text-black py-3 px-6 rounded-full hover:bg-gray-200">了解更多</a>
+        </div>
+    </section>
+
+    <!-- 活动介绍 -->
+    <section id="about" class="section">
+        <div class="container mx-auto px-8">
+            <h2 class="text-center mb-8">活动介绍</h2>
+            <p class="text-center mb-12">安工大第五茶欢会是一场充满温馨与欢乐的活动，旨在为广大师生提供一个交流与放松的平台。在这里，你可以品尝到各种美味的茶品，结交志同道合的朋友。</p>
+            <div class="flex flex-wrap justify-center space-x-8 space-y-8">
+                <div class="card bg-gray-800 p-8 rounded-lg w-1/3">
+                    <i class="fa-solid fa-mug-hot text-4xl text-center mb-4"></i>
+                    <h3 class="text-center mb-4">茶品品鉴</h3>
+                    <p class="text-center">活动现场将提供多种优质茶品供大家品鉴，让你感受不同茶的魅力。</p>
+                </div>
+                <div class="card bg-gray-800 p-8 rounded-lg w-1/3">
+                    <i class="fa-solid fa-users text-4xl text-center mb-4"></i>
+                    <h3 class="text-center mb-4">交流互动</h3>
+                    <p class="text-center">与来自不同专业的师生交流互动，拓展人脉，增进友谊。</p>
+                </div>
+                <div class="card bg-gray-800 p-8 rounded-lg w-1/3">
+                    <i class="fa-solid fa-music text-4xl text-center mb-4"></i>
+                    <h3 class="text-center mb-4">文艺表演</h3>
+                    <p class="text-center">欣赏精彩的文艺表演，享受轻松愉悦的氛围。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活动日程 -->
+    <section id="schedule" class="section">
+        <div class="container mx-auto px-8">
+            <h2 class="text-center mb-8">活动日程</h2>
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">时间</th>
+                        <th class="px-4 py-2">活动内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">14:00 - 14:30</td>
+                        <td class="border px-4 py-2">签到入场</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">14:30 - 15:30</td>
+                        <td class="border px-4 py-2">茶品介绍与品鉴</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">15:30 - 16:30</td>
+                        <td class="border px-4 py-2">交流互动环节</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">16:30 - 17:30</td>
+                        <td class="border px-4 py-2">文艺表演</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 精彩瞬间 -->
+    <section id="gallery" class="section">
+        <div class="container mx-auto px-8">
+            <h2 class="text-center mb-8">精彩瞬间</h2>
+            <div class="flex flex-wrap justify-center space-x-8 space-y-8">
+                <img src="https://picsum.photos/300/200" alt="精彩瞬间" class="rounded-lg">
+                <img src="https://picsum.photos/300/200" alt="精彩瞬间" class="rounded-lg">
+                <img src="https://picsum.photos/300/200" alt="精彩瞬间" class="rounded-lg">
+                <img src="https://picsum.photos/300/200" alt="精彩瞬间" class="rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- 每日新闻 -->
+    <section id="news" class="section">
+        <div class="container mx-auto px-8">
+            <h2 class="text-center mb-8">每日新闻</h2>
+            <div class="news-item">
+                <div class="news-date">2025年4月15日</div>
+                <h3>茶欢会筹备进展顺利</h3>
+                <p>目前安工大第五茶欢会的各项筹备工作正在有条不紊地进行中，茶品、表演等环节都已基本确定。</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2025年4月14日</div>
+                <h3>新增特色茶品</h3>
+                <p>为了给大家带来更多的品茶体验，茶欢会新增了几种特色茶品，欢迎大家前来品鉴。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 登录模态框 -->
+    <div id="login-modal" class="fixed top-0 left-0 right-0 bottom-0 hidden flex justify-center items-center">
+        <div class="bg-gray-800 p-8 rounded-lg w-1/3">
+            <h2 class="mb-4">用户登录</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="username" class="block text-sm font-medium text-gray-300">用户名</label>
+                    <input type="text" id="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-medium text-gray-300">密码</label>
+                    <input type="password" id="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" class="bg-white text-black py-3 px-6 rounded-full hover:bg-gray-200" onclick="closeLoginModal()">取消</button>
+                    <button type="submit" class="bg-blue-500 text-white py-3 px-6 rounded-full hover:bg-blue-600 ml-4">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 滚动导航栏背景颜色变化
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 打开登录模态框
+        function openLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.style.display = 'flex';
+        }
+
+        // 关闭登录模态框
+        function closeLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.style.display = 'none';
+        }
+
+        // 星星鼠标拖尾效果
+        document.addEventListener('mousemove', function (e) {
+            const starTrail = document.createElement('div');
+            starTrail.classList.add('star-trail');
+            starTrail.style.left = e.pageX - 5 + 'px';
+            starTrail.style.top = e.pageY - 5 + 'px';
+            document.body.appendChild(starTrail);
+
+            // 移除过期的拖尾元素
+            setTimeout(() => {
+                starTrail.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>    
